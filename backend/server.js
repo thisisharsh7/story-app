@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const cors = require('cors');
 const res = require('express/lib/response');
+const dotenv = require('dotenv')
 
 const app = express();
 
@@ -10,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-const OPENAI_API_KEY = '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'; // Replace with your GPT-3.5 Turbo API key
+const OPENAI_API_KEY = dotenv.OPENAI_API_KEY; // Replace with your GPT-3.5 Turbo API key
 
 app.post('/generate-story', async (req, res) => {
   const { prompt } = req.body;
